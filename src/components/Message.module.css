@@ -1,0 +1,124 @@
+.Message {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 0 0.5em 0.5em 0.5em;
+}
+
+.Bubble {
+    display: flex;
+    flex-direction: row;
+    padding: 0.25em calc(2em / 3);
+    border-radius: 1.5em;
+    min-width: 2em;
+    max-width: 80%;
+    height: auto;
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    font-size: 1em;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    /* user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; */
+}
+
+.Bubble > div {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.Message .tail { /* speech bubble tail */
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #dcf8c6 transparent transparent;
+    right: -15px;
+    bottom: 0;
+    z-index: 1;
+}
+
+.received {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.received .Bubble {
+    color: white;
+    display: flex;
+    align-content: flex-start;
+    align-self: flex-start;
+    justify-content: flex-start;
+    background: rgb(0, 132, 255);
+    background: linear-gradient(
+        35deg,
+        rgb(0, 132, 255) 0%,
+        rgb(0, 212, 255) 100%
+    );
+}
+.sent::before {
+    /* content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 20px solid #dcf8c6;
+    border-color: transparent #dcf8c6 transparent transparent; */
+}
+
+.sent {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.sent .Bubble {
+    color: black;
+    display: flex;
+    align-content: flex-end;
+    align-self: flex-end;
+    justify-content: flex-end;
+    background: rgb(200, 200, 200);
+    background: linear-gradient(
+        35deg,
+        rgb(200, 200, 200) 0%,
+        rgb(230, 230, 230) 100%
+    );
+}
+
+.expanded {
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+.Message:hover .expanded {
+    /* display: flex; */
+    transition: all 0.3s ease-in-out;
+}
+.expanded .message-timestamp > p {
+    color: rgb(155, 155, 155);
+    padding: 0 calc(1em / 3);
+    font-size: smaller;
+}
+
+
+.Timestamp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5em;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 0.5em 0;
+    transition: all 0.3s ease-in-out;
+}
